@@ -16,6 +16,11 @@ const CHART_WIDTH = 40;
 const CHART_MAX_HEIGHT = 150;
 const CHART_GAP_BETWEEN = 50;
 
+const winnerTitlePositionX = CLOUD_X + TITLE_GAP_X;
+const winnerTitlePositionY =  CLOUD_Y + TITLE_GAP_Y;
+const chartPositionX = CLOUD_X + NAME_GAP_X;
+const chartPositionY = CLOUD_Y + CHART_GAP_Y;
+
 const renderCloud = function (ctx, x, y, color) {
   ctx.fillStyle = color;
   ctx.fillRect(x, y, CLOUD_WIDTH, CLOUD_HEIGHT);
@@ -51,8 +56,8 @@ window.renderStatistics = function (ctx, names, times) {
   ctx.fillStyle = `#000`;
   ctx.font = `bold 16px PT Mono`;
   ctx.textBaseline = `hanging`;
-  ctx.fillText(`Ура вы победили!`, CLOUD_X + TITLE_GAP_X, CLOUD_Y + TITLE_GAP_Y);
-  ctx.fillText(`Список результатов:`, CLOUD_X + TITLE_GAP_X, CLOUD_Y + TITLE_GAP_Y + FONT_GAP + TITLE_GAP_BETWEEN);
+  ctx.fillText(`Ура вы победили!`, winnerTitlePositionX, winnerTitlePositionY);
+  ctx.fillText(`Список результатов:`, winnerTitlePositionX, winnerTitlePositionY + FONT_GAP + TITLE_GAP_BETWEEN);
 
   const maxTime = getMaxElement(times);
 
@@ -63,14 +68,14 @@ window.renderStatistics = function (ctx, names, times) {
 
     ctx.fillText(
         names[i],
-        CLOUD_X + NAME_GAP_X + (CHART_WIDTH + CHART_GAP_BETWEEN) * i,
+        chartPositionX + (CHART_WIDTH + CHART_GAP_BETWEEN) * i,
         CLOUD_Y + NAME_GAP_Y
     );
 
     ctx.fillText(
         Math.round(times[i]),
-        CLOUD_X + NAME_GAP_X + (CHART_WIDTH + CHART_GAP_BETWEEN) * i,
-        CLOUD_Y + CHART_GAP_Y - chartHeight - FONT_GAP
+        chartPositionX + (CHART_WIDTH + CHART_GAP_BETWEEN) * i,
+        chartPositionY - chartHeight - FONT_GAP
     );
 
     if (names[i] === `Вы`) {
@@ -80,8 +85,8 @@ window.renderStatistics = function (ctx, names, times) {
     }
 
     ctx.fillRect(
-        CLOUD_X + NAME_GAP_X + (CHART_WIDTH + CHART_GAP_BETWEEN) * i,
-        CLOUD_Y + CHART_GAP_Y,
+        chartPositionX + (CHART_WIDTH + CHART_GAP_BETWEEN) * i,
+        chartPositionY,
         CHART_WIDTH,
         -chartHeight
     );
