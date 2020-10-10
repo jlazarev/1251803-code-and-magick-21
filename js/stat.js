@@ -20,6 +20,7 @@ const winnerTitlePositionX = CLOUD_X + TITLE_GAP_X;
 const winnerTitlePositionY =  CLOUD_Y + TITLE_GAP_Y;
 const chartPositionX = CLOUD_X + NAME_GAP_X;
 const chartPositionY = CLOUD_Y + CHART_GAP_Y;
+const chartGapBetween = CHART_WIDTH + CHART_GAP_BETWEEN;
 
 const renderCloud = function (ctx, x, y, color) {
   ctx.fillStyle = color;
@@ -68,13 +69,13 @@ window.renderStatistics = function (ctx, names, times) {
 
     ctx.fillText(
         names[i],
-        chartPositionX + (CHART_WIDTH + CHART_GAP_BETWEEN) * i,
+        chartPositionX + chartGapBetween * i,
         CLOUD_Y + NAME_GAP_Y
     );
 
     ctx.fillText(
         Math.round(times[i]),
-        chartPositionX + (CHART_WIDTH + CHART_GAP_BETWEEN) * i,
+        chartPositionX + chartGapBetween * i,
         chartPositionY - chartHeight - FONT_GAP
     );
 
@@ -85,7 +86,7 @@ window.renderStatistics = function (ctx, names, times) {
     }
 
     ctx.fillRect(
-        chartPositionX + (CHART_WIDTH + CHART_GAP_BETWEEN) * i,
+        chartPositionX + chartGapBetween * i,
         chartPositionY,
         CHART_WIDTH,
         -chartHeight
