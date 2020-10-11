@@ -17,7 +17,7 @@ const CHART_MAX_HEIGHT = 150;
 const CHART_GAP_BETWEEN = 50;
 
 const winnerTitlePositionX = CLOUD_X + TITLE_GAP_X;
-const winnerTitlePositionY =  CLOUD_Y + TITLE_GAP_Y;
+const winnerTitlePositionY = CLOUD_Y + TITLE_GAP_Y;
 const chartPositionX = CLOUD_X + NAME_GAP_X;
 const chartPositionY = CLOUD_Y + CHART_GAP_Y;
 const chartGapBetween = CHART_WIDTH + CHART_GAP_BETWEEN;
