@@ -28,7 +28,7 @@ const generationWizards = function () {
   }
 
   return wizardsArr;
-}
+};
 
 const wizards = generationWizards();
 
