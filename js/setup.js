@@ -1,29 +1,36 @@
 'use strict';
 
-const FIRSTNAMES = [`Иван`, `Хуан Себастьян`, `Мария`, `Кристоф`, `Виктор`, `Юлия`, `Люпита`, `Вашингтон`];
-const SURNAMES = [`да Марья`, `Верон`, `Мирабелла`, `Вальц`, `Онопко`, `Топольницкая`, `Нионго`, `Ирвинг`];
+const FIRST_NAMES = [`Иван`, `Хуан Себастьян`, `Мария`, `Кристоф`, `Виктор`, `Юлия`, `Люпита`, `Вашингтон`];
+const LAST_NAMES = [`да Марья`, `Верон`, `Мирабелла`, `Вальц`, `Онопко`, `Топольницкая`, `Нионго`, `Ирвинг`];
 const COAT_COLORS = [`rgb(101, 137, 164)`, `rgb(241, 43, 107)`, `rgb(146, 100, 161)`, `rgb(56, 159, 117)`, `rgb(215, 210, 55)`, `rgb(0, 0, 0)`];
 const EYES_COLORS = [`black`, `red`, `blue`, `yellow`, `green`];
+const COUNT_WIZARD = 4;
 
 const setup = document.querySelector(`.setup`);
 
 setup.classList.remove(`hidden`);
 
-const wizards = [];
-
-const generationData = function (firstnames, surnames, coatColors, eyesColors) {
+const generationWizard = function () {
   const wizardData = {
-    name: firstnames[Math.floor(Math.random() * firstnames.length)] + ` ` + surnames[Math.floor(Math.random() * surnames.length)],
-    coatColor: coatColors[Math.floor(Math.random() * coatColors.length)],
-    eyesColor: eyesColors[Math.floor(Math.random() * eyesColors.length)]
+    name: FIRST_NAMES[Math.floor(Math.random() * FIRST_NAMES.length)] + ` ` + LAST_NAMES[Math.floor(Math.random() * LAST_NAMES.length)],
+    coatColor: COAT_COLORS[Math.floor(Math.random() * COAT_COLORS.length)],
+    eyesColor: EYES_COLORS[Math.floor(Math.random() * EYES_COLORS.length)]
   };
 
   return wizardData;
 };
 
-for (let i = 0; i < 4; i++) {
-  wizards.push(generationData(FIRSTNAMES, SURNAMES, COAT_COLORS, EYES_COLORS));
+const generationWizards = function () {
+  const wizardsArr = [];
+
+  for (let i = 0; i < COUNT_WIZARD; i++) {
+    wizardsArr.push(generationWizard());
+  }
+
+  return wizardsArr;
 }
+
+const wizards = generationWizards();
 
 const similarListElement = setup.querySelector(`.setup-similar-list`);
 const similarWizardTemplate = document.querySelector(`#similar-wizard-template`).content.querySelector(`.setup-similar-item`);
@@ -38,7 +45,7 @@ const renderWizard = function (wizard) {
   return wizardElement;
 };
 
-const fillingBlock = function (wizardsArr) {
+const renderWizards = function (wizardsArr) {
   const fragment = document.createDocumentFragment();
 
   for (let i = 0; i < wizardsArr.length; i++) {
@@ -48,6 +55,6 @@ const fillingBlock = function (wizardsArr) {
   return fragment;
 };
 
-similarListElement.appendChild(fillingBlock(wizards));
+similarListElement.appendChild(renderWizards(wizards));
 
 setup.querySelector(`.setup-similar`).classList.remove(`hidden`);
