@@ -54,7 +54,8 @@ button
 
 *[tabindex]:focus,
 button:focus,
-input:focus
+input:focus,
+button:focus img
 {
     outline: none;
     box-shadow: 0 0 10px #fff000;
@@ -700,13 +701,17 @@ input[type=radio]:checked + .review-mark-label
     box-shadow: 10px 10px 0 rgba(0, 0, 0, .25);
 }
 
-.setup-open-icon
+.setup-open
 {
     position: absolute;
     z-index: 2;
     top: 100px;
     right: 100px;
+    background-color: transparent;
+}
 
+.setup-open-icon
+{
     cursor: pointer;
 }
 
