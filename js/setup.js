@@ -60,34 +60,34 @@ setup.querySelector(`.setup-similar`).classList.remove(`hidden`);
 
 // module4-task1
 
-const setupOpen = document.querySelector('.setup-open');
-const setupClose = setup.querySelector('.setup-close');
+const setupOpen = document.querySelector(`.setup-open`);
+const setupClose = setup.querySelector(`.setup-close`);
 const userName = setup.querySelector(`.setup-user-name`);
 
 const onPopupEscPress = function (evt) {
-  if (evt.key === 'Escape' && evt.target !== userName) {
+  if (evt.key === `Escape` && evt.target !== userName) {
     evt.preventDefault();
     closePopup();
   }
 };
 
 const openPopup = function () {
-  setup.classList.remove('hidden');
+  setup.classList.remove(`hidden`);
 
-  document.addEventListener('keydown', onPopupEscPress);
+  document.addEventListener(`keydown`, onPopupEscPress);
 };
 
 const closePopup = function () {
-  setup.classList.add('hidden');
+  setup.classList.add(`hidden`);
 
-  document.removeEventListener('keydown', onPopupEscPress);
+  document.removeEventListener(`keydown`, onPopupEscPress);
 };
 
-setupOpen.addEventListener('click', function () {
+setupOpen.addEventListener(`click`, function () {
   openPopup();
 });
 
-setupClose.addEventListener('click', function () {
+setupClose.addEventListener(`click`, function () {
   closePopup();
 });
 
@@ -101,7 +101,7 @@ const eyesInput = setup.querySelector(`input[name="eyes-color"]`);
 const fireballInput = setup.querySelector(`input[name="fireball-color"]`);
 
 const getRandomColor = function (colors, exceptColor) {
-  const rangeOfColors = colors.filter(x => x !== exceptColor);
+  const rangeOfColors = colors.filter((x) => x !== exceptColor);
   const newColor = rangeOfColors[Math.floor(Math.random() * rangeOfColors.length)];
 
   return newColor;
@@ -109,7 +109,7 @@ const getRandomColor = function (colors, exceptColor) {
 
 let oldCoatColor = null;
 let oldEyesColor = null;
-let oldFireballColor = null
+let oldFireballColor = null;
 
 userCoat.addEventListener(`click`, function () {
   const color = getRandomColor(COAT_COLORS, oldCoatColor);
